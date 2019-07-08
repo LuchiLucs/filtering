@@ -11,8 +11,11 @@ function [x,P] = unscented_transform(sigmas, Wm, Wc, Q)
 x = sigmas*Wm';
 
 %% Computed covariance from deterministic sampled points
-% depolarization 
+
+% depolarization
 y = sigmas - x;
+
+% covariance
 P = y * diag(Wc) * y' + Q;
 
 end

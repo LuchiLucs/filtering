@@ -3,7 +3,7 @@ function z = robot_measure(robot_pos, landmarks, range_std, bearing_std, dim_z)
 %landmarks
     dx = landmarks(1, :) - robot_pos(1);    
     dy = landmarks(2, :) - robot_pos(2);
-    distance = sqrt(dx.^2 + dy.^2) + randn()*range_std;
+    distance = sqrt(dx.^2 + dy.^2) + randn() * range_std;
     bearing = atan2(landmarks(2, :) - robot_pos(2), landmarks(1, :) - robot_pos(1));
     angle = normalize_angle(bearing - robot_pos(3) + randn()*bearing_std);
     z = [distance; angle];

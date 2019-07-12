@@ -14,10 +14,10 @@ function x = robot_move(x, u, dt, wheelbase)
         sinhb = sin(orientation + beta);
         cosh = cos(orientation);
         coshb = cos(orientation + beta);
-        x = x + [-radius*sinh + radius*sinhb; radius*cosh - radius*coshb; beta];
+        x = x + [-radius * sinh + radius * sinhb, radius * cosh - radius * coshb, beta]';
     else
-        x = x + [distance*cos(orientation); distance*sin(orientation); 0];
+        x = x + [distance * cos(orientation), distance * sin(orientation), 0]';
     end
-       x(3, :) = normalize_angle(x(3, :));
+    x(3, :) = normalize_angle(x(3, :));
 end
 

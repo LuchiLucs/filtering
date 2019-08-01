@@ -1,6 +1,6 @@
 function indexes = systematic_resampling(weights)
 %SYSTEMATIC_RESAMPLING Summary of this function goes here
-%   Detailed explanation goes here
+%   Make N subdivisions, choose positions with a consistent random offset
     N = length(weights);
     positions = ((0:N-1) + rand()) / N;
     indexes = zeros(N, 1);

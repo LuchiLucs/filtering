@@ -1,12 +1,13 @@
-function Fu = robot_move_ju(x, u, dt, wheelbase)
+function Fu = robot_move_ju(x, u, wheelbase, dt)
 %H_ROBOT_JACOB Summary of this function goes here
 %   Detailed explanation goes here
 
-    syms x y theta v alpha w r t
+    syms xx yy th v a w t real
     d = v * t;
-    beta = (d / w) * tan(alpha);
-    fxu = [x - r * sin(theta) + r * sin(theta + beta), y + r * cos(theta) - r * cos(theta + beta), theta + beta]';
-    Fu = jacobian(fxu, [v alpha]);
-
+    r = w / tan(a);
+    b = (d / w) * tan(a);
+    fxu = [xx - r * sin(th) + r * sin(th + b), yy + r * cos(th) - r * cos(th + b), th + b]';
+    Fu = jacobian(fxu, [v a]);
+    Fu = vpa(subs(Fu, [xx yy th v a w t], [x' u' wheelbase dt]));
 end
 

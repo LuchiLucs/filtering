@@ -3,7 +3,7 @@ function hx = h_robot(x, landmarks)
 %   Detailed explanation goes here
     [n, m] = size(landmarks);
     hx = zeros(n*m, size(x, 2));
-    for jj = 1:m
+    for jj = 1 : m
         distance = sqrt((landmarks(1, jj) - x(1, :)).^2 + (landmarks(2, jj) - x(2, :)).^2);
         angle = atan2(landmarks(2, jj) - x(2, :), landmarks(1, jj) - x(1, :));
         hx(2*jj-1:2*jj, :) =  [distance; normalize_angle(angle - x(3))];

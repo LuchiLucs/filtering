@@ -11,6 +11,6 @@ function x = bicycle_kinematic_move(x, u, dt, wheelbase)
     radius = wheelbase / tan(steering_angle);
     
     x = x + [-radius * sin(orientation) + radius * sin(orientation + beta), radius * cos(orientation) - radius * cos(orientation + beta), beta]';
-    x(3, :) = normalize_angle(x(3, :));
+    x(3, :) = wrapToPi(x(3, :));
 end
 
